@@ -1,12 +1,16 @@
 ## Country Data
 ### countries.csv
 252 rows × 8 columns
+
 Columns:
+
 'ISO', 'ISO3', 'ISOnumeric', 'FIPS', 'countryName', 'Continent', 'geonameid', 'dependsFrom'
 
 ### alternateCountryNames.csv 
 44430 rows × 15 columns
+
 Columns:
+
 'ISO', 'ISO3', 'ISOnumeric', 'FIPS', 'countryName', 'Continent', 'geonameid', 'dependsFrom', 'alternateNameId', 'isolanguage', 'altName', 'isPreferredName', 'isShortName', 'isColloquial', 'isHistoric'
 
 ### Column definition
