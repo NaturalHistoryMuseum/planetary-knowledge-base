@@ -10,9 +10,7 @@ Filtered on family=Plantae
 
 #### Column definition
 
-Columns:
-
-taxonID, name, authorship, taxonRank, status, parent, synonymOf
+Columns: taxonID, name, authorship, taxonRank, status, parent, synonymOf
 
 * taxonID: Primary identifer
 * name: Taxonomic name e.g. Veronicastrum lungtsuanense
@@ -24,6 +22,6 @@ taxonID, name, authorship, taxonRank, status, parent, synonymOf
 
 #### Relationships
 
-taxa.parent -> taxa.taxonID
-taxa.synonymOf -> taxa.taxonID
+* taxa.parent -> taxa.taxonID
+* taxa.synonymOf -> taxa.taxonID
 
