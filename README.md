@@ -129,12 +129,10 @@ Columns: 'gbifID', 'occurrenceID', 'verbatimScientificName', 'verbatimScientific
 * typeStatus: Status of a specimen in defining the name of a species
 * lastInterpreted: Most recent date and time when the record was processed or updated.
 * issue: Potential problems or flags associated with a record
-* bottomTaxaRank: The bottom taxonRank of the specimen 
-* bottomTaxaValue: The bottom taxon name recorded on the specimen 
+* taxonID: The bottom taxon name recorded on the specimen 
 
 #### Relationships
-* specimens.bottomTaxaValue -> taxa.name [determination]
-* specimens.bottomTaxaRank -> taxa.taxonRank [determination]
+* specimens.taxonID -> taxa.taxonID [determination]
 * specimens.recordedBy -> person. [collectedBy]
 * specimens.identifiedBy -> person. [determinedBy]
 * specimens.institutionCode -> institutions.code
