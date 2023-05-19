@@ -129,10 +129,10 @@ Columns: 'gbifID', 'occurrenceID', 'verbatimScientificName', 'verbatimScientific
 * typeStatus: Status of a specimen in defining the name of a species
 * lastInterpreted: Most recent date and time when the record was processed or updated.
 * issue: Potential problems or flags associated with a record
-* taxonID: The bottom taxon name recorded on the specimen 
+* taxonKey: unique identifier for the taxonomic classification of the organism observed.
 
 #### Relationships
-* specimens.taxonID -> taxa.taxonID [determination]
+* specimens.taxonKey -> taxa.taxonID [determination]
 * specimens.recordedBy -> person. [collectedBy]
 * specimens.identifiedBy -> person. [determinedBy]
 * specimens.institutionCode -> institutions.code
