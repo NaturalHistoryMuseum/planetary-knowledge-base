@@ -22,7 +22,7 @@ Columns: 'uuid','code','name','country', 'altCodes'
 
 #### Relationships
 
-institution.country -> country.iso
+* institution.country -> country.iso
 
 ## Country Data
 ### countries.csv
@@ -42,14 +42,14 @@ Sourced from GeoNames geographical database: https://www.geonames.org/
 #### Column definition
 * ISO			: ISO-3166 2-letter country code
 * ISO3			: 3-letter ISO country code
-* ISOnumeric 		: numeric ISO country code
-* FIPS 			: most admin1 code are FIPS codes
-* countryName		: name of the geographical country point
-* Continent 		: geographical continent code
-* geonameid		: integer id of record in geonames database
-* dependsFrom	: dependent countries or territories
-* alternateNameId	: integer id of this alternate name
-* isolanguage		: iso 639 language code 2- or 3-characters; 4-characters 'post' for postal codes and 'iata','icao' and faac for airport codes, fr_1793 for French Revolution names,  abbr for abbreviation, link to a website (mostly to wikipedia), wkdt for the wikidataid
+* ISOnumeric 		: Numeric ISO country code
+* FIPS 			: Most admin1 code are FIPS codes
+* countryName		: Name of the geographical country point
+* Continent 		: Geographical continent code
+* geonameid		: Integer id of record in geonames database
+* dependsFrom	: Dependent countries or territories
+* alternateNameId	: Integer id of this alternate name
+* isolanguage		: ISO 639 language code 2- or 3-characters; 4-characters 'post' for postal codes and 'iata','icao' and faac for airport codes, fr_1793 for French Revolution names,  abbr for abbreviation, link to a website (mostly to wikipedia), wkdt for the wikidataid
 altName		: alternate name or name variant
 * isPreferredName	: '1', if this alternate name is an official/preferred name
 * isShortName		: '1', if this is a short name
@@ -91,3 +91,51 @@ Columns: taxonID, name, authorship, taxonRank, status, parent, synonymOf
 
 * taxa.parent -> taxa.taxonID
 * taxa.synonymOf -> taxa.taxonID
+
+## Specimens Data
+### loadSpecimen.ipynb
+A data loading and preprocessing script.
+
+#### Data sources
+GBIF Occurrence Download - 105,738,391 specimen records.
+
+DOI: https://doi.org/10.15468/dl.5qqpak
+
+#### Column definition
+
+Columns: 'gbifID', 'occurrenceID', 'verbatimScientificName', 'verbatimScientificNameAuthorship', 'countryCode', 'locality', 'stateProvince', 'occurrenceStatus', 'decimalLatitude', 'decimalLongitude', 'day', 'month', 'year', 'basisOfRecord', 'institutionCode', 'collectionCode', 'catalogNumber', 'recordNumber', 'identifiedBy', 'dateIdentified', 'recordedBy', 'typeStatus', 'lastInterpreted', 'issue', 'bottomTaxaRank', 'bottomTaxaValue'
+
+* gbifID: Primary identifer
+* occurrenceID: A unique identifier for a particular record of an occurrence (refers to an observed evidence of an organism at a particular time and place)
+* verbatimScientificName:  Exact original scientific name
+* verbatimScientificNameAuthorship: Exact original scientific name authorship
+* countryCode: ISO-3166 2-letter country code
+* locality: Specific place where an organism was observed
+* stateProvince: Name of the region or state where the observation took place
+* occurrenceStatus Whether the organism is actually present or not
+* decimalLatitude: Geographical decimal latitude
+* decimalLongitude: Geographical decimal longitude
+* day: Event day
+* month: Event month
+* year: Event year
+* basisOfRecord: Source of the original observation or collection data
+* institutionCode: Official institution short form code
+* collectionCode: Collection code
+* catalogNumber: Catalog number
+* recordNumber: Record number
+* identifiedBy: determined by - verbatim
+* dateIdentified: Date of indentified
+* recordedBy: collected by - verbatim
+* typeStatus: Status of a specimen in defining the name of a species
+* lastInterpreted
+* issue: Potential problems or flags associated with a record
+* bottomTaxaRank: The bottom taxonRank of the specimen 
+* bottomTaxaValue: The bottom taxon name recorded on the specimen 
+
+#### Relationships
+* specimens.bottomTaxaValue -> taxa.name [determination]
+* specimens.bottomTaxaRank -> taxa.taxonRank [determination]
+* collectedBy [link to person]
+* determinedBy [link to person]
+* institutionCode [link to institution]
+* countryCode [link to country]
