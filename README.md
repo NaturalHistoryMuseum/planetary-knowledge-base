@@ -127,7 +127,7 @@ Columns: 'gbifID', 'occurrenceID', 'verbatimScientificName', 'verbatimScientific
 * dateIdentified: Date of indentified
 * recordedBy: collected by - verbatim
 * typeStatus: Status of a specimen in defining the name of a species
-* lastInterpreted
+* lastInterpreted: Most recent date and time when the record was processed or updated.
 * issue: Potential problems or flags associated with a record
 * bottomTaxaRank: The bottom taxonRank of the specimen 
 * bottomTaxaValue: The bottom taxon name recorded on the specimen 
@@ -135,7 +135,9 @@ Columns: 'gbifID', 'occurrenceID', 'verbatimScientificName', 'verbatimScientific
 #### Relationships
 * specimens.bottomTaxaValue -> taxa.name [determination]
 * specimens.bottomTaxaRank -> taxa.taxonRank [determination]
-* collectedBy [link to person]
-* determinedBy [link to person]
-* institutionCode [link to institution]
-* countryCode [link to country]
+* specimens.recordedBy -> person. [collectedBy]
+* specimens.identifiedBy -> person. [determinedBy]
+* specimens.institutionCode -> institutions.code
+* specimens.countryCode -> country.iso
+
+## Person (TBC)
